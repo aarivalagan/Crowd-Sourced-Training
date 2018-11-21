@@ -1,0 +1,489 @@
+<app-menu></app-menu>
+<script>console.log(5 + 6);</script>
+<!-- <div class="main">
+    <div class="card card-body bg-light">Admin Module</div>
+    <div *ngFor='let item of videoList'>
+     <span *ngIf="item.embed">{{item.rule}}</span>
+      <div style="height:20%;margin:0%" *ngIf="item.embed">
+        <iframe [src]='getEmbedUrl(item)' allowfullscreen class="col-sm-4"></iframe>
+        <img src="assets/pdf.jpg" style="height:25px;width:25px" class="smallStatusImage" alt="Excel Icon for View Accrual Excel Report"
+        />
+        <a href="{{item.URL}}" target="_blank" class="col-sm-4" style="padding-bottom: 10px">Click here for the pdf file</a>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" [(ngModel)]="item.isActive" (click)="CheckboxCheck(item.rule,$event)">Make It Active</label>
+        </div>
+      </div>
+    </div>
+  </div> -->
+<div class="main">
+  <!-- <div class="form-group">
+      <label for="usr">Course Name:</label>
+      <input type="text" [(ngModel)]="sName" class="form-control" id="usr">
+    </div>
+
+    <div class="form-group">
+      <label for="pwd">Youtube Embed:</label>
+      <input type="text"  [(ngModel)]="sEmbed" class="form-control" id="pwd">
+    </div>
+
+    <div class="form-group">
+      <label for="lnk">PDF Link:</label>
+      <input type="text" class="form-control" id="lnk" [(ngModel)]="sLink">
+    </div>
+    <div class="form-group">
+      <label for="que">Question:</label>
+      <input type="text" class="form-control" id="que" [(ngModel)]="sQuestion">
+    </div>
+    <button type="button" class="btn btn-info" (click)="publishIt()">Publish</button> -->
+    <button type="button" class="btn btn-primary" (click)="QuizForm" >Upload Quiz</button>
+
+    <h3 class="text-center">Publish Course</h3>
+  <form [formGroup]="videoForm">
+    <div class="form">
+      <label for="usr">Course Name: </label>
+      <input type="text" formControlName="name" class="form-control" id="name" required>
+      <div *ngIf="videoForm.controls['name'].errors && !videoForm.controls['name'].pristine" class="error-msg">
+        <div [hidden]="!videoForm.controls['name'].errors.required">Name is required.</div>
+      </div>
+    </div>
+
+    <div class="form">
+      <label for="usr">ownership: </label>
+      <input type="text" formControlName="ownership" class="form-control" id="ownership" required>
+      <div *ngIf="videoForm.controls['ownership'].errors && !videoForm.controls['ownership'].pristine" class="error-msg">
+        <div [hidden]="!videoForm.controls['ownership'].errors.required">Name is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="usr">Document Link1: </label>
+      <input type="text" formControlName="URL" class="form-control" id="URL" required>
+    </div>
+    <div class="form-group col-sm-12">
+      <label for="usr">Document Link2: </label>
+      <input type="text" formControlName="URL1" class="form-control" id="URL1" required>
+    </div>
+    <div class="form-group col-sm-12">
+      <label for="usr">Document Link3: </label>
+      <input type="text" formControlName="URL2" class="form-control" id="URL2" required>
+    </div>
+    <div class="form-group col-sm-12">
+      <label for="usr">Video Embed1: </label>
+      <input type="text" formControlName="embed" class="form-control-file" id="embed" required>
+    </div>
+    <div class="form-group col-sm-12">
+      <label for="usr">Video Embed2: </label>
+      <input type="text" formControlName="embed1" class="form-control-file" id="embed1" required>
+    </div>
+    <div class="form-group col-sm-12">
+      <label for="usr">Video Embed3: </label>
+      <input type="text" formControlName="embed2" class="form-control-file" id="embed2" required>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="usr">Choose file to Upload </label>
+      <!--<input type="file" multiple formControlName="file" class="form-control" id="file" (change)="handleFileInput($event.target.files)" accept=".pdf,.docx" required>-->
+      <input type="file" multiple formControlName="file" class="form-control" id="file" (change)="upload($event)" accept=".pdf,.docx" required >
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">
+      File uploaded: <a [href]="downloadSrc">{{downloadSrc}}</a>
+  </div>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="usr">Choose file to Upload </label>
+      <!--<input type="file" multiple formControlName="file" class="form-control" id="file" (change)="handleFileInput($event.target.files)" accept=".pdf,.docx" required>-->
+      <input type="file" multiple formControlName="file1" class="form-control" id="file1" (change)="upload1($event)" accept=".pdf,.docx" required >
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress1 | async) + '%'" [attr.aria-valuenow]="(uploadProgress1 | async)" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div *ngIf="downloadURL1 | async; let downloadSrc1" class="alert alert-info" role="alert">
+      File uploaded: <a [href]="downloadSrc1">{{downloadSrc1}}</a>
+  </div>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="usr">Choose file to Upload </label>
+      <!--<input type="file" multiple formControlName="file" class="form-control" id="file" (change)="handleFileInput($event.target.files)" accept=".pdf,.docx" required>-->
+      <input type="file" multiple formControlName="file2" class="form-control" id="file2" (change)="upload2($event)" accept=".pdf,.docx" required >
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress2 | async) + '%'" [attr.aria-valuenow]="(uploadProgress2 | async)" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div *ngIf="downloadURL2 | async; let downloadSrc2" class="alert alert-info" role="alert">
+      File uploaded: <a [href]="downloadSrc2">{{downloadSrc2}}</a>
+  </div>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="usr">Question: </label>
+      <input type="text" formControlName="question1" class="form-control" id="question1" required>
+    </div>
+    <div class="form-group col-sm-6">
+      <label for="usr">Option A: </label>
+      <input type="text" formControlName="Opta1" class="form-control" id="Opta1" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option B: </label>
+      <input type="text" formControlName="Optb1" class="form-control" id="Optb1" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option C: </label>
+      <input type="text" formControlName="Optc1" class="form-control" id="Optc1" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option D: </label>
+      <input type="text" formControlName="Optd1" class="form-control" id="Optd1" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Correct Answer: </label>
+      <input type="text" formControlName="answer1" class="form-control" id="answer1" required>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="usr">Question 2: </label>
+      <input type="text" formControlName="question2" class="form-control" id="question2" required>
+    </div>
+    <div class="form-group col-sm-6">
+      <label for="usr">Option A: </label>
+      <input type="text" formControlName="Opta2" class="form-control" id="Opta2" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option B: </label>
+      <input type="text" formControlName="Optb2" class="form-control" id="Optb2" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option C: </label>
+      <input type="text" formControlName="Optc2" class="form-control" id="Optc2" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option D: </label>
+      <input type="text" formControlName="Optd2" class="form-control" id="Optd2" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Correct Answer: </label>
+      <input type="text" formControlName="answer2" class="form-control" id="answer2" required>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="usr">Question 3: </label>
+      <input type="text" formControlName="question3" class="form-control" id="question3" required>
+    </div>
+    <div class="form-group col-sm-6">
+      <label for="usr">Option A: </label>
+      <input type="text" formControlName="Opta3" class="form-control" id="Opta3" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option B: </label>
+      <input type="text" formControlName="Optb3" class="form-control" id="Optb3" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option C: </label>
+      <input type="text" formControlName="Optc3" class="form-control" id="Optc3" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option D: </label>
+      <input type="text" formControlName="Optd3" class="form-control" id="Optd3" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Correct Answer: </label>
+      <input type="text" formControlName="answer3" class="form-control" id="answer3" required>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="usr">Question 4: </label>
+      <input type="text" formControlName="question4" class="form-control" id="question4" required>
+    </div>
+    <div class="form-group col-sm-6">
+      <label for="usr">Option A: </label>
+      <input type="text" formControlName="Opta4" class="form-control" id="Opta4" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option B: </label>
+      <input type="text" formControlName="Optb4" class="form-control" id="Optb4" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option C: </label>
+      <input type="text" formControlName="Optc4" class="form-control" id="Optc4" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option D: </label>
+      <input type="text" formControlName="Optd4" class="form-control" id="Optd4" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Correct Answer: </label>
+      <input type="text" formControlName="answer4" class="form-control" id="answer4" required>
+    </div> 
+
+    <div class="form-group col-sm-12">
+      <label for="usr">Question 5: </label>
+      <input type="text" formControlName="question5" class="form-control" id="question5" required>
+    </div>
+    <div class="form-group col-sm-6">
+      <label for="usr">Option A: </label>
+      <input type="text" formControlName="Opta5" class="form-control" id="Opta5" required>
+    </div>
+  
+    <div class="form-group col-sm-6">
+      <label for="usr">Option B: </label>
+      <input type="text" formControlName="Optb5" class="form-control" id="Optb5" required>
+    </div>
+  
+    <div class="form-group col-sm-6">
+      <label for="usr">Option C: </label>
+      <input type="text" formControlName="Optc5" class="form-control" id="Optc5" required>
+    </div>
+  
+    <div class="form-group col-sm-6">
+      <label for="usr">Option D: </label>
+      <input type="text" formControlName="Optd5" class="form-control" id="Optd5" required>
+    </div>
+  
+    <div class="form-group col-sm-6">
+      <label for="usr">Correct Answer: </label>
+      <input type="text" formControlName="answer5" class="form-control" id="answer5" required>
+    </div> 
+
+    <div class="form-group col-sm-12">
+      <label for="usr">Question 6: </label>
+      <input type="text" formControlName="question6" class="form-control" id="question6" required>
+    </div>
+    <div class="form-group col-sm-6">
+      <label for="usr">Option A: </label>
+      <input type="text" formControlName="Opta6" class="form-control" id="Opta6" required>
+    </div>
+    
+    <div class="form-group col-sm-6">
+      <label for="usr">Option B: </label>
+      <input type="text" formControlName="Optb6" class="form-control" id="Optb6" required>
+    </div>
+    
+    <div class="form-group col-sm-6">
+      <label for="usr">Option C: </label>
+      <input type="text" formControlName="Optc6" class="form-control" id="Optc6" required>
+    </div>
+    
+    <div class="form-group col-sm-6">
+      <label for="usr">Option D: </label>
+      <input type="text" formControlName="Optd6" class="form-control" id="Optd6" required>
+    </div>
+    
+    <div class="form-group col-sm-6">
+      <label for="usr">Correct Answer: </label>
+      <input type="text" formControlName="answer6" class="form-control" id="answer6" required>
+    </div> 
+        
+    <div class="form-group col-sm-12">
+      <label for="usr">Question 7: </label>
+      <input type="text" formControlName="question7" class="form-control" id="question7" required>
+    </div>
+    <div class="form-group col-sm-6">
+      <label for="usr">Option A: </label>
+      <input type="text" formControlName="Opta7" class="form-control" id="Opta7" required>
+    </div>
+      
+    <div class="form-group col-sm-6">
+      <label for="usr">Option B: </label>
+      <input type="text" formControlName="Optb7" class="form-control" id="Optb7" required>
+    </div>
+      
+    <div class="form-group col-sm-6">
+      <label for="usr">Option C: </label>
+      <input type="text" formControlName="Optc7" class="form-control" id="Optc7" required>
+    </div>
+      
+    <div class="form-group col-sm-6">
+      <label for="usr">Option D: </label>
+      <input type="text" formControlName="Optd7" class="form-control" id="Optd7" required>
+    </div>
+      
+    <div class="form-group col-sm-6">
+      <label for="usr">Correct Answer: </label>
+      <input type="text" formControlName="answer7" class="form-control" id="answer7" required>
+    </div> 
+
+    <div class="form-group col-sm-12">
+      <label for="usr">Question 8: </label>
+      <input type="text" formControlName="question8" class="form-control" id="question8" required>
+    </div>
+    <div class="form-group col-sm-6">
+      <label for="usr">Option A: </label>
+      <input type="text" formControlName="Opta8" class="form-control" id="Opta8" required>
+    </div>
+        
+    <div class="form-group col-sm-6">
+      <label for="usr">Option B: </label>
+      <input type="text" formControlName="Optb8" class="form-control" id="Optb8" required>
+    </div>
+        
+    <div class="form-group col-sm-6">
+      <label for="usr">Option C: </label>
+      <input type="text" formControlName="Optc8" class="form-control" id="Optc8" required>
+    </div>
+        
+    <div class="form-group col-sm-6">
+      <label for="usr">Option D: </label>
+      <input type="text" formControlName="Optd8" class="form-control" id="Optd8" required>
+    </div>
+        
+    <div class="form-group col-sm-6">
+      <label for="usr">Correct Answer: </label>
+      <input type="text" formControlName="answer8" class="form-control" id="answer8" required>
+    </div> 
+
+    <div class="form-group col-sm-12">
+      <label for="usr">Question 9: </label>
+      <input type="text" formControlName="question9" class="form-control" id="question9" required>
+    </div>
+    <div class="form-group col-sm-6">
+      <label for="usr">Option A: </label>
+      <input type="text" formControlName="Opta9" class="form-control" id="Opta9" required>
+    </div>
+          
+    <div class="form-group col-sm-6">
+      <label for="usr">Option B: </label>
+      <input type="text" formControlName="Optb9" class="form-control" id="Optb9" required>
+    </div>
+          
+    <div class="form-group col-sm-6">
+      <label for="usr">Option C: </label>
+      <input type="text" formControlName="Optc9" class="form-control" id="Optc9" required>
+    </div>
+          
+    <div class="form-group col-sm-6">
+      <label for="usr">Option D: </label>
+      <input type="text" formControlName="Optd9" class="form-control" id="Optd9" required>
+    </div>
+          
+    <div class="form-group col-sm-6">
+      <label for="usr">Correct Answer: </label>
+      <input type="text" formControlName="answer9" class="form-control" id="answer9" required>
+    </div> 
+
+    <div class="form-group col-sm-12">
+      <label for="usr">Question 10: </label>
+      <input type="text" formControlName="question10" class="form-control" id="question10" required>
+    </div>
+    <div class="form-group col-sm-6">
+      <label for="usr">Option A: </label>
+      <input type="text" formControlName="Opta10" class="form-control" id="Opta10" required>
+    </div>
+            
+    <div class="form-group col-sm-6">
+      <label for="usr">Option B: </label>
+      <input type="text" formControlName="Optb10" class="form-control" id="Optb10" required>
+    </div>
+            
+    <div class="form-group col-sm-6">
+      <label for="usr">Option C: </label>
+      <input type="text" formControlName="Optc10" class="form-control" id="Optc10" required>
+    </div>
+            
+    <div class="form-group col-sm-6">
+      <label for="usr">Option D: </label>
+      <input type="text" formControlName="Optd10" class="form-control" id="Optd10" required>
+    </div>
+            
+    <div class="form-group col-sm-6">
+      <label for="usr">Correct Answer: </label>
+      <input type="text" formControlName="answer10" class="form-control" id="answer10" required>
+    </div> 
+      
+    <button type="submit"  class="btn btn-info" (click)="publishIt()">Publish</button>
+  </form>
+
+  <h3 class="text-center">Publish Quiz</h3>
+    <form [formGroup]="Quiz_Form">
+      <div class="form">
+        <label for="usr">Course Name: </label>
+        <input type="text" formControlName="course_name" class="form-control" (change)="onChange($event.target.value)" id="course_name" required>
+        <div *ngIf="Quiz_Form.controls['course_name'].errors && !Quiz_Form.controls['course_name'].pristine" class="error-msg">
+          <div [hidden]="!Quiz_Form.controls['course_name'].errors.required">Name is required.</div>
+        </div>
+      </div>
+
+    <div class="form">
+      <label for="usr">Quiz Name: </label>
+        <input type="text" formControlName="quiz_name" class="form-control" id="quiz_name" required>
+        <div *ngIf="Quiz_Form.controls['quiz_name'].errors && !Quiz_Form.controls['quiz_name'].pristine" class="error-msg">
+          <div [hidden]="!Quiz_Form.controls['quiz_name'].errors.required">Name is required.</div>
+        </div>
+    </div>
+
+      <div class="form-group col-sm-12">
+        <label for="usr">Question: </label>
+        <input type="text" formControlName="question1" class="form-control" id="question1" required>
+      </div>
+      <div class="form-group col-sm-6">
+        <label for="usr">Option A: </label>
+        <input type="text" formControlName="Opta1" class="form-control" id="Opta1" required>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label for="usr">Option B: </label>
+        <input type="text" formControlName="Optb1" class="form-control" id="Optb1" required>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label for="usr">Option C: </label>
+        <input type="text" formControlName="Optc1" class="form-control" id="Optc1" required>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label for="usr">Option D: </label>
+        <input type="text" formControlName="Optd1" class="form-control" id="Optd1" required>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <label for="usr">Correct Answer: </label>
+        <input type="text" formControlName="answer1" class="form-control" id="answer1" required>
+      </div>
+      <button type="submit" [disabled]="Quiz_Form.invalid" class="btn btn-info" (click)="publishQuiz()">PublishQuiz</button>
+    </form>
+
+    <h3 class="text-center">Publish Document</h3>
+    <form [formGroup]="Doc_Form">
+      <div class="form">
+        <label for="usr">Course Name: </label>
+        <input type="text" formControlName="course_name" class="form-control" id="course_name" required>
+        <div *ngIf="Quiz_Form.controls['course_name'].errors && !Quiz_Form.controls['course_name'].pristine" class="error-msg">
+          <div [hidden]="!Quiz_Form.controls['course_name'].errors.required">Name is required.</div>
+        </div>
+      </div>
+
+    <div class="form-group col-sm-12">
+      <label for="usr">Choose file to Upload </label>
+      <!--<input type="file" multiple formControlName="file" class="form-control" id="file" (change)="handleFileInput($event.target.files)" accept=".pdf,.docx" required>-->
+      <input type="file" multiple formControlName="file" class="form-control" id="file" (change)="upload($event)" accept=".pdf,.docx" required >
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">
+      File uploaded: <a [href]="downloadSrc">{{downloadSrc}}</a>
+  </div>
+    </div>
+    <button type="submit" [disabled]="Doc_Form.invalid" class="btn btn-info" (click)="publishDoc()">PublishDoc</button>
+  </form>
+
+  <!-- <p>Form value: {{ videoForm.value | json }}</p> -->
+  <!--<button><input id="File-field" name="File-Field" change=uploadFile($event) type="file" accept=".pdf,.docx"> Upload</button>-->
+
+</div>

@@ -1,0 +1,68 @@
+<app-menu></app-menu>
+<nav class="navbar navbar-inverse bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <!--<li><a href="javascript:void(0)">Hi {{name}}</a></li>-->
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2']">HOME</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/admin']">Admin</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/Intro']">Modules</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/this.videodata1[0].name']" (click)=Quiz(this.videodata1[0].name)>Quizzes</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/video']">Videos</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/training/Angular2/Angular2/files']">Files</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/login']" (click)=logout()>LogOut</a></li>
+  </ul>
+</nav>
+<h1>Architecture</h1>
+<a href="https://www.tutorialspoint.com/angular2/images/anatomy.jpg"></a>
+<p>Each application consists of Components. Each component is a logical boundary of functionality for the application. You need to have layered services, which are used to share the functionality across components.</p>
+A component consists of −
+<ul>
+<li>Class − This is like a C++ or Java class which consists of properties and methods.</li>
+
+<li>Metadata − This is used to decorate the class and extend the functionality of the class.</li>
+
+<li>Template − This is used to define the HTML view which is displayed in the application.</li>
+</ul>
+
+<a href="https://www.tutorialspoint.com/angular2/images/componet.jpg"></a>
+
+<p>Following is an example of a component.</p>
+<!--<pre>
+  <code>
+    import { Component } from '@angular/core';
+
+@Component ({ 
+   selector: 'my-app', 
+   templateUrl: 'app/app.component.html' 
+}) 
+
+export class AppComponent { 
+   appTitle: string = 'Welcome';
+} 
+  </code>
+</pre>-->
+
+<p>Each application is made up of modules. Each Angular 2 application needs to have one Angular Root Module. Each Angular Root module can then have multiple components to separate the functionality.</p>
+
+<p>Following is an example of a root module.</p>
+
+<!--<pre>
+    import { NgModule }      from '@angular/core'; 
+    import { BrowserModule } from '@angular/platform-browser'; 
+    import { AppComponent }  from './app.component';  
+
+    @NgModule ({ 
+    imports:      [ BrowserModule ], 
+    declarations: [ AppComponent ], 
+    bootstrap:    [ AppComponent ] 
+    }) 
+    export class AppModule { }
+</pre>-->
+
+<a href="https://www.tutorialspoint.com/angular2/images/functionality.jpg"></a>
+<p>Each application is made up of feature modules where each module has a separate feature of the application. Each Angular feature module can then have multiple components to separate the functionality.</p>
+<a href="https://www.tutorialspoint.com/angular2/images/each_application.jpg"></a>
+
+<ul class="pagination">
+  <li class="page-item"><a class="page-link" href="/training/Angular2/Angular2/Intro/modules">Previous</a></li>
+  <li class="page-item"><a class="page-link" href="/training/Angular2/Angular2/Intro/component">Next</a></li>
+</ul>

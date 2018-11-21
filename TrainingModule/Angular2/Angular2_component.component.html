@@ -1,0 +1,139 @@
+<app-menu></app-menu>
+<nav class="navbar navbar-inverse bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <!--<li><a href="javascript:void(0)">Hi {{name}}</a></li>-->
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2']">HOME</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/admin']">Admin</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/Intro']">Modules</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/this.videodata1[0].name']" (click)=Quiz(this.videodata1[0].name)>Quizzes</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/video']">Videos</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/training/Angular2/Angular2/files']">Files</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/login']" (click)=logout()>LogOut</a></li>
+  </ul>
+</nav>
+<h1>Component</h1>
+<p>Components are a logical piece of code for Angular JS application. A Component consists of the following −</p>
+
+<ul>
+<li>Template − This is used to render the view for the application. This contains the HTML that needs to be rendered in the application. This part also includes the binding and directives.</li>
+
+<li>Class − This is like a class defined in any language such as C. This contains properties and methods. This has the code which is used to support the view. It is defined in TypeScript.</li>
+
+<li>Metadata − This has the extra data defined for the Angular class. It is defined with a decorator.</li>
+
+<h3>Class</h3>
+<p>The class decorator. The class is defined in TypeScript. The class normally has the following syntax in TypeScript.</p>
+
+<!--<pre class="prettyprint notranslate">
+    Syntax
+    class classname {
+       Propertyname: PropertyType = Value
+    }
+</pre>-->
+
+<h4>Parameters</h4>
+<ul>
+<li>Classname − This is the name to be given to the class.</li>
+
+<li>Propertyname − This is the name to be given to the property.</li>
+
+<li>PropertyType − Since TypeScript is strongly typed, you need to give a type to the property.</li>
+
+<li>Value − This is the value to be given to the property.</li>
+
+<!--<pre>
+  <code>
+    Example
+export class AppComponent {
+   appTitle: string = 'Welcome';
+}
+  </code>
+</pre>-->
+
+<p>In the example, the following things need to be noted −</p>
+
+<ul>
+<li>We are defining a class called AppComponent.</li>
+
+<li>The export keyword is used so that the component can be used in other modules in the Angular JS application.</li>
+
+<li>appTitle is the name of the property.</li>
+
+<li>The property is given the type of string.</li>
+
+<li>The property is given a value of ‘Welcome’.</li>
+</ul>
+
+<h3>Template</h3>
+<p>This is the view which needs to be rendered in the application.</p>
+
+<!--<pre>
+  <code>
+    Syntax
+    Template: '
+       <HTML code>
+       class properties
+    '
+  </code>
+</pre>-->
+
+<h4>Parameters</h4>
+<ul>
+<li>HTML Code − This is the HTML code which needs to be rendered in the application.</li>
+
+<li>Class properties − These are the properties of the class which can be referenced in the template.</li>
+</ul>
+
+<!--<pre>
+  <code>
+    Example
+template: '
+   <div>
+      <h1>{{appTitle}}</h1>
+      <div>To Tutorials Point</div>
+   </div>
+'
+  </code>
+</pre>-->
+
+<p>In the example, the following things need to be noted −</p>
+<ul>
+  <li>We are defining the HTML code which will be rendered in our application</li>
+  <li>We are also referencing the appTitle property from our class.</li>
+</ul>
+
+<h3>Metadata</h3>
+<p>This is used to decorate Angular JS class with additional information</p>
+
+<!--<pre>
+  <code>
+    Example
+import { Component } from '@angular/core';
+
+@Component ({
+   selector: 'my-app',
+   template: ` <div>
+      <h1>{{appTitle}}</h1>
+      <div>To Tutorials Point</div>
+   </div> `,
+})
+
+export class AppComponent {
+   appTitle: string = 'Welcome';
+}
+  </code>
+</pre>-->
+
+<p>In the above example, the following things need to be noted −</p>
+<ul>
+  <li>We are using the import keyword to import the ‘Component’ decorator from the angular/core module.</li>
+  
+  <li>We are then using the decorator to define a component.</li>
+
+  <li>The component has a selector called ‘my-app’. This is nothing but our custom html tag which can be used in our main html page.</li>
+
+</ul>
+<ul class="pagination">
+  <li class="page-item"><a class="page-link" href="/training/Angular2/Angular2/Intro/architecture">Previous</a></li>
+  <li class="page-item"><a class="page-link" href="/training/Angular2/Angular2/Intro/directive">Next</a></li>
+</ul>

@@ -1,0 +1,30 @@
+  <app-menu></app-menu>
+  <div class="main">
+    <h1>Angular Quiz</h1>
+      <p class="question">1. Which of the following is true about ng-app directive?</p>
+      <ul class="answers">
+      <input type="radio" [(ngModel)]="q1" value="1a" id="q1a" name="q1"><label for="q1a">ng-app directive defines and links an AngularJS application to HTML.</label><br/>
+      <input type="radio" [(ngModel)]="q1" value="1b" id="q1b"  name="q1"><label for="q1b">ng-app directive indicates the start of the application.</label><br/>
+      <input type="radio" [(ngModel)]="q1" value="1c" id="q1c"  name="q1"><label for="q1c">Both of the above.</label><br/>
+      <input type="radio" [(ngModel)]="q1" value="1d" id="q1d" name="q1" ><label for="q1d">None of the above.</label><br/>
+      </ul>
+      <p class="question">2. Which of the following is true about lowercase filter?</p>
+      <ul class="answers1">
+      <input type="radio" [(ngModel)]="q2" value="2a" id="q2a" name="q2"><label for="q2a">Lowercase filter converts a text to lower case text.</label><br/>
+      <input type="radio" [(ngModel)]="q2" value="2b" id="q2b" name="q2"><label for="q2b">Lowercase filter is a function which takes text as input.</label><br/>
+      <input type="radio" [(ngModel)]="q2" value="2c" id="q2c" name="q2"><label for="q2c">Both of the above.</label><br/>
+      <input type="radio" [(ngModel)]="q2" value="2d" id="q2d" name="q2"><label for="q2d">None of the above.</label><br/>
+      </ul>
+      <p class="question">3. $http service is used to make an Ajax call to server?</p>
+      <ul class="answers">
+        <input type="radio" [(ngModel)]="q3" value="3a" id="q3a" name="q3"><label for="q2a">False</label><br/>
+        <input type="radio" [(ngModel)]="q3" value="3b" id="q3b" name="q3"><label for="q2b">True</label><br/>
+      </ul>
+      <p class="question">4.Using service method, we define a service and then assign method to it?</p>
+      <ul class="answers">
+      <input type="radio" [(ngModel)]="q4" value="4a" id="q4a"  name="q4"><label for="q4a">True</label><br/>
+      <input type="radio" [(ngModel)]="q4" value="4b" id="q4b"  name="q4"><label for="q4b">False</label><br/>
+      </ul>
+   <button class="btn btn-default" (click)="SubmitClick()">Submit</button>
+  </div>
+

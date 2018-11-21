@@ -1,0 +1,62 @@
+<app-menu></app-menu>
+<nav class="navbar navbar-inverse bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <!--<li><a href="javascript:void(0)">Hi {{name}}</a></li>-->
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2']">HOME</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/admin']">Admin</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/Intro']">Modules</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/this.videodata1[0].name']" (click)=Quiz(this.videodata1[0].name)>Quizzes</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/video']">Videos</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/training/Angular2/Angular2/files']">Files</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/login']" (click)=logout()>LogOut</a></li>
+  </ul>
+</nav>
+<h1>Navigation</h1>
+<p>In Angular 2, it is also possible to carry out manual navigation. Following are the steps.</p>
+<ul>
+<li>Step 1 − Add the following code to the Inventory.component.ts file.</li>
+
+<!--<pre>
+  <code>
+import { Component } from '@angular/core'; 
+import { Router }  from '@angular/router';  
+
+@Component ({  
+   selector: 'my-app',  
+   template: 'Inventory 
+   <a class = "button" (click) = "onBack()">Back to Products</a>' 
+})  
+
+export class AppInventory {  
+   constructor(private _router: Router){} 
+
+   onBack(): void { 
+      this._router.navigate(['/Product']); 
+   } 
+}
+  </code>
+</pre>-->
+
+<p>The following points need to be noted about the above program −</p>
+
+<ul>
+<li>Declare an html tag which has an onBack function tagged to the click event. Thus, when a user clicks this, they will be directed back to the Products page.</li>
+
+<li>In the onBack function, use the router.navigate to navigate to the required page.</li>
+</ul>
+
+<li>Step 2 − Now, save all the code and run the application using npm. Go to the browser, you will see the following output.</li>
+<a href="https://www.tutorialspoint.com/angular2/images/application_using_npm.jpg"></a>
+
+<li>Step 3 − Click the Inventory link.</li>
+<a href="https://www.tutorialspoint.com/angular2/images/inventory_link.jpg"></a>
+
+Inventory Link
+<li>Step 4 − Click the ‘Back to products’ link, you will get the following output which takes you back to the Products page.</li>
+<a href="https://www.tutorialspoint.com/angular2/images/back_to_products.jpg"></a>
+</ul>
+
+<ul class="pagination">
+    <li class="page-item"><a class="page-link" href="/training/Angular2/Angular2/Intro/routing">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="/training/Angular2/Angular2/Intro/form">Next</a></li>
+  </ul>

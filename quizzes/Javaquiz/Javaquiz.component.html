@@ -1,0 +1,66 @@
+  <app-menu></app-menu>
+  <div class="main">
+    <h1>Java Quiz</h1>
+    <p class="question">1.How will you print in JAVA?</p>
+    <ul class="answers">
+      <input type="radio" [(ngModel)]="q1" value="1a" id="q1a" name="q1">
+      <label for="q1a">System.out.println ( )</label>
+      <br/>
+      <input type="radio" [(ngModel)]="q1" value="1b" id="q1b" name="q1">
+      <label for="q1b">System ( )</label>
+      <br/>
+      <input type="radio" [(ngModel)]="q1" value="1c" id="q1c" name="q1">
+      <label for="q1c">console.log ( )</label>
+      <br/>
+      <input type="radio" [(ngModel)]="q1" value="1d" id="q1d" name="q1">
+      <label for="q1d">System.out</label>
+      <br/>
+    </ul>
+    <p class="question">2.Which constructor initializes the object with the current date and time?</p>
+    <ul class="answers1">
+      <input type="radio" [(ngModel)]="q2" value="2a" id="q2a" name="q2">
+      <label for="q2a">Time()</label>
+      <br/>
+      <input type="radio" [(ngModel)]="q2" value="2b" id="q2b" name="q2">
+      <label for="q2b">Seconds()</label>
+      <br/>
+      <input type="radio" [(ngModel)]="q2" value="2c" id="q2c" name="q2">
+      <label for="q2c">Date( )</label>
+      <br/>
+      <input type="radio" [(ngModel)]="q2" value="2d" id="q2d" name="q2">
+      <label for="q2d">Minutes()</label>
+      <br/>
+    </ul>
+    <p class="question">3.Which of the following stands true about default modifier of class members?</p>
+    <ul class="answers1">
+      <input type="radio" [(ngModel)]="q3" value="3a" id="q3a" name="q3">
+      <label for="q3a">By default, variables, methods and constructors can be accessed by subclass only</label>
+      <br/>
+      <input type="radio" [(ngModel)]="q3" value="3b" id="q3b" name="q3">
+      <label for="q3b">By default, variables, methods and constructors can be accessed by any class lying in any package</label>
+      <br/>
+      <input type="radio" [(ngModel)]="q3" value="3c" id="q3c" name="q3">
+      <label for="q3c">By default, variables, methods and constructors can be accessed by any class lying in the same package</label>
+      <br/>
+      <input type="radio" [(ngModel)]="q3" value="3d" id="q3d" name="q3">
+      <label for="q3d">None of the above</label>
+      <br/>
+    </ul>
+    <p class="question">4.What is an Interface?</p>
+    <ul class="answers1">
+      <input type="radio" [(ngModel)]="q4" value="4a" id="q4a" name="q4">
+      <label for="q4a">An interface is a collection of abstract methods</label>
+      <br/>
+      <input type="radio" [(ngModel)]="q4" value="4b" id="q4b" name="q4">
+      <label for="q4b">Interface is an abstract class</label>
+      <br/>
+      <input type="radio" [(ngModel)]="q4" value="4c" id="q4c" name="q4">
+      <label for="q4c">Interface is an concrete class</label>
+      <br/>
+      <input type="radio" [(ngModel)]="q4" value="4d" id="q4d" name="q4">
+      <label for="q4d">None of the above</label>
+      <br/>
+    </ul>
+    <button class="btn btn-default" (click)="SubmitClick()">Submit</button>
+  </div>
+

@@ -1,0 +1,125 @@
+<app-menu></app-menu>
+<nav class="navbar navbar-inverse bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <!--<li><a href="javascript:void(0)">Hi {{name}}</a></li>-->
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2']">HOME</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/admin']">Admin</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/Intro']">Modules</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/this.videodata1[0].name']" (click)=Quiz(this.videodata1[0].name)>Quizzes</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/video']">Videos</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/training/Angular2/Angular2/files']">Files</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/login']" (click)=logout()>LogOut</a></li>
+  </ul>
+</nav>
+<h1>Forms</h1>
+<p>Angular 2 can also design forms which can use two-way binding using the ngModel directive. Let’s see how we can achieve this.</p>
+
+<ul>
+<li>Step 1 − Create a model which is a products model. Create a file called products.ts file.</li>
+
+<li>Step 2 − Place the following code in the file.</li>
+
+<!--<pre>
+      <code>
+         export class Product { 
+   constructor ( 
+      public productid: number, 
+      public productname: string 
+   ) {  } 
+} 
+      </code>
+</pre>-->
+
+This is a simple class which has 2 properties, productid and productname.
+
+<li>Step 3 − Create a product form component called product-form.component.ts component and add the following code −</li>
+
+<!--<pre>
+      <code>
+import { Component } from '@angular/core';
+import { Product } from './products';
+
+@Component ({
+   selector: 'product-form',
+   templateUrl: './product-form.component.html'
+})
+
+export class ProductFormComponent {
+   model = new Product(1,'ProductA');
+}
+      </code>
+</pre>-->
+
+<p>The following points need to be noted about the above program.
+
+Create an object of the Product class and add values to the productid and productname.
+
+Use the templateUrl to specify the location of our product-form.component.html which will render the component.</p>
+
+<li>Step 4 − Create the actual form. Create a file called product-form.component.html and place the following code.</li>
+
+<!--<pre>
+      <code>
+<div class = "container">
+   <h1>Product Form</h1>
+   <form>
+      <div class = "form-group">
+         <label for = "productid">ID</label>
+         <input type = "text" class = "form-control" id = "productid" required
+            [(ngModel)] = "model.productid" name = "id">
+      </div>
+      
+      <div class = "form-group">
+         <label for = "name">Name</label>
+         <input type = "text" class = "form-control" id = "name"
+            [(ngModel)] = "model.productname" name = "name">
+      </div>
+   </form>
+</div>
+      </code>
+</pre>-->
+
+<p>The following point needs to be noted about the above program.
+
+The ngModel directive is used to bind the object of the product to the separate elements on the form.</p>
+
+<li>Step 5 − Place the following code in the app.component.ts file.</li>
+
+<!--<pre>
+      <code>
+import { Component } from '@angular/core';
+
+@Component ({
+   selector: 'my-app',
+   template: '<product-form></product-form>'
+})
+export class AppComponent { }
+      </code>
+</pre>-->
+
+<li>Step 6 − Place the below code in the app.module.ts file</li>
+
+<!--<pre>
+      <code>
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
+import { ProductFormComponent } from './product-form.component';
+
+@NgModule ({
+   imports: [ BrowserModule,FormsModule],
+   declarations: [ AppComponent,ProductFormComponent],
+   bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+      </code>
+</pre>-->
+
+<li>Step 7 − Save all the code and run the application using npm. Go to your browser, you will see the following output.</li>
+</ul>
+
+<ul class="pagination">
+      <li class="page-item"><a class="page-link" href="/training/Angular2/Angular2/Intro/navigation">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="/training/Angular2/Angular2/Intro/userinput">Next</a></li>
+    </ul>

@@ -1,0 +1,18 @@
+<app-menu></app-menu>
+<div class="main">
+  <div class="card card-body bg-light">Completed Trainings</div>
+  <div class="row" style="Padding:10px">
+    <a href="javascript:void(0)" class="btn btn-primary col-sm-4" style="margin-right: 25px; background-color:tomato">Training
+      Modules</a>
+    <a href="javascript:void(0)" class="btn btn-primary col-sm-2" style="margin-right: 25px; background-color:tomato">Status</a>
+    <a href="javascript:void(0)" class="btn btn-primary col-sm-2" style="margin-right: 25px; background-color:tomato">Score</a>
+  </div>
+  <div>
+    <div class="row" style="Padding:2px" *ngFor="let x of videoList">
+      <a href="javascript:void(0)" class="btn btn-primary col-sm-4" *ngIf="x.Completed && x.isActive" style="margin-right: 25px;">{{x.name}}</a>
+      <a href="javascript:void(0)" class="btn btn-primary col-sm-2" *ngIf="x.Completed && x.isActive" style="margin-right: 25px;">Completed</a>
+      <a href="javascript:void(0)" class="btn btn-primary col-sm-2" *ngIf="x.Completed && x.isActive" style="margin-right: 25px;">{{x.score}}</a>
+      <a [routerLink]="['/training']" class="btn btn-primary col-sm-2" *ngIf="x.Completed && x.isActive">Reload</a>
+    </div>
+  </div>
+</div>

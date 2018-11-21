@@ -1,0 +1,16 @@
+<app-menu></app-menu>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div class="main">
+    <div class="card card-body bg-light">Pending Trainings</div>
+    <div class="row"style="Padding:10px">
+      <fieldset style="margin-right: 25px; background-color:tomato">Training Modules</fieldset>
+      <a  href="javascript:void(0)" class="btn btn-primary col-sm-2" style="margin-right: 25px; background-color:tomato">Status</a>
+    </div>
+    <div class="row" style="Padding:2px" *ngFor="let x of videoList">
+        <a  href="javascript:void(0)" class="btn btn-primary col-sm-4" *ngIf="!x.Completed && x.isActive" style="margin-right: 25px;">{{x.name}}</a>
+        <a  href="javascript:void(0)" class="btn btn-primary col-sm-2" *ngIf="!x.Completed && x.isActive" style="margin-right: 25px;">Pending</a>
+        <a [routerLink]="['/training']" class="btn btn-primary col-sm-2" *ngIf="!x.Completed && x.isActive">Resume</a>
+      </div>
+  </div>

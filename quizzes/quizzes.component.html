@@ -1,0 +1,89 @@
+<app-menu></app-menu>
+<nav class="navbar navbar-inverse bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <!--<li><a href="javascript:void(0)">Hi {{name}}</a></li>-->
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2']">HOME</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/admin']">Admin</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/Intro']">Modules</a></li>
+    <li class="nav-item"><a class="nav-link" (click)=Quiz(this.videodata1[0].name)>Quizzes</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/video']">Videos</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/training/Angular2/Angular2/files']">Files</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/login']" (click)=logout()>LogOut</a></li>
+  </ul>
+</nav>
+<div class='main' *ngIf="filterdData[0]">
+  <h1> {{filterdData[0].name}} Quiz</h1>
+  <p class='question'>{{filterdData[0].question1}}</p>
+
+  <ul class='answers'>
+  <input type='radio' [(ngModel)]='q1' value='a' id='qa1'  name='q1'><label for='q1a'>{{filterdData[0].Opta1}}</label><br/>
+  <input type='radio' [(ngModel)]='q1' value='b' id='qb1'  name='q1'><label for='q1b'>{{filterdData[0].Optb1}}</label><br/>
+  <input type='radio' [(ngModel)]='q1' value='c' id='qc1'  name='q1'><label for='q1c'>{{filterdData[0].Optc1}}</label><br/>
+  <input type='radio' [(ngModel)]='q1' value='d' id='qd1'  name='q1'><label for='q1d'>{{filterdData[0].Optd1}}</label><br/>
+  </ul>
+  <p class='question'>{{filterdData[0].question2}}</p>
+  <ul class='answers'>
+  <input type='radio' [(ngModel)]='q2' value='a' id='qa2'  name='q2'><label for='q2a'>{{filterdData[0].Opta2}}</label><br/>
+  <input type='radio' [(ngModel)]='q2' value='b' id='qb2'  name='q2'><label for='q2b'>{{filterdData[0].Optb2}}</label><br/>
+  <input type='radio' [(ngModel)]='q2' value='c' id='qc2'  name='q2'><label for='q2c'>{{filterdData[0].Optc2}}</label><br/>
+  <input type='radio' [(ngModel)]='q2' value='d' id='qd2'  name='q2'><label for='q2d'>{{filterdData[0].Optd2}}</label><br/>
+  </ul>
+  <p class='question'>{{filterdData[0].question3}}</p>
+  <ul class='answers'>
+  <input type='radio' [(ngModel)]='q3' value='a' id='qa3'  name='q3'><label for='q3a'>{{filterdData[0].Opta3}}</label><br/>
+  <input type='radio' [(ngModel)]='q3' value='b' id='qb3'  name='q3'><label for='q3b'>{{filterdData[0].Optb3}}</label><br/>
+  <input type='radio' [(ngModel)]='q3' value='c' id='qc3'  name='q3'><label for='q3c'>{{filterdData[0].Optc3}}</label><br/>
+  <input type='radio' [(ngModel)]='q3' value='d' id='qd3'  name='q3'><label for='q3d'>{{filterdData[0].Optd3}}</label><br/>
+  </ul>
+  <p class='question'>{{filterdData[0].question4}}</p>
+  <ul class='answers'>
+  <input type='radio' [(ngModel)]='q4' value='a' id='qa4'  name='q4'><label for='q4a'>{{filterdData[0].Opta4}}</label><br/>
+  <input type='radio' [(ngModel)]='q4' value='b' id='qb4'  name='q4'><label for='q4b'>{{filterdData[0].Optb4}}</label><br/>
+  <input type='radio' [(ngModel)]='q4' value='c' id='qc4'  name='q4'><label for='q4c'>{{filterdData[0].Optc4}}</label><br/>
+  <input type='radio' [(ngModel)]='q4' value='d' id='qd4'  name='q4'><label for='q4d'>{{filterdData[0].Optd4}}</label><br/>
+  </ul>
+  <p class='question'>{{filterdData[0].question5}}</p>
+  <ul class='answers'>
+  <input type='radio' [(ngModel)]='q5' value='a' id='qa5'  name='q5'><label for='q5a'>{{filterdData[0].Opta5}}</label><br/>
+  <input type='radio' [(ngModel)]='q5' value='b' id='qb5'  name='q5'><label for='q5b'>{{filterdData[0].Optb5}}</label><br/>
+  <input type='radio' [(ngModel)]='q5' value='c' id='qc5'  name='q5'><label for='q5c'>{{filterdData[0].Optc5}}</label><br/>
+  <input type='radio' [(ngModel)]='q5' value='d' id='qd5'  name='q5'><label for='q5d'>{{filterdData[0].Optd5}}</label><br/>
+  </ul>
+  <p class='question'>{{filterdData[0].question6}}</p>
+  <ul class='answers'>
+  <input type='radio' [(ngModel)]='q6' value='a' id='qa6'  name='q6'><label for='q6a'>{{filterdData[0].Opta6}}</label><br/>
+  <input type='radio' [(ngModel)]='q6' value='b' id='qb6'  name='q6'><label for='q6b'>{{filterdData[0].Optb6}}</label><br/>
+  <input type='radio' [(ngModel)]='q6' value='c' id='qc6'  name='q6'><label for='q6c'>{{filterdData[0].Optc6}}</label><br/>
+  <input type='radio' [(ngModel)]='q6' value='d' id='qd6'  name='q6'><label for='q6d'>{{filterdData[0].Optd6}}</label><br/>
+  </ul>
+  <p class='question'>{{filterdData[0].question7}}</p>
+  <ul class='answers'>
+  <input type='radio' [(ngModel)]='q7' value='a' id='qa7'  name='q7'><label for='q7a'>{{filterdData[0].Opta7}}</label><br/>
+  <input type='radio' [(ngModel)]='q7' value='b' id='qb7'  name='q7'><label for='q7b'>{{filterdData[0].Optb7}}</label><br/>
+  <input type='radio' [(ngModel)]='q7' value='c' id='qc7'  name='q7'><label for='q7c'>{{filterdData[0].Optc7}}</label><br/>
+  <input type='radio' [(ngModel)]='q7' value='d' id='qd7'  name='q7'><label for='q7d'>{{filterdData[0].Optd7}}</label><br/>
+  </ul>
+  <p class='question'>{{filterdData[0].question8}}</p>
+  <ul class='answers'>
+  <input type='radio' [(ngModel)]='q8' value='a' id='qa8'  name='q8'><label for='q8a'>{{filterdData[0].Opta8}}</label><br/>
+  <input type='radio' [(ngModel)]='q8' value='b' id='qb8'  name='q8'><label for='q8b'>{{filterdData[0].Optb8}}</label><br/>
+  <input type='radio' [(ngModel)]='q8' value='c' id='qc8'  name='q8'><label for='q8c'>{{filterdData[0].Optc8}}</label><br/>
+  <input type='radio' [(ngModel)]='q8' value='d' id='qd8'  name='q8'><label for='q8d'>{{filterdData[0].Optd8}}</label><br/>
+  </ul>
+  <p class='question'>{{filterdData[0].question9}}</p>
+  <ul class='answers'>
+  <input type='radio' [(ngModel)]='q9' value='a' id='qa9'  name='q9'><label for='q9a'>{{filterdData[0].Opta9}}</label><br/>
+  <input type='radio' [(ngModel)]='q9' value='b' id='qb9'  name='q9'><label for='q9b'>{{filterdData[0].Optb9}}</label><br/>
+  <input type='radio' [(ngModel)]='q9' value='c' id='qc9'  name='q9'><label for='q9c'>{{filterdData[0].Optc9}}</label><br/>
+  <input type='radio' [(ngModel)]='q9' value='d' id='qd9'  name='q9'><label for='q9d'>{{filterdData[0].Optd9}}</label><br/>
+  </ul>
+  <p class='question'>{{filterdData[0].question10}}</p>
+  <ul class='answers'>
+  <input type='radio' [(ngModel)]='q10' value='a' id='qa10'  name='q10'><label for='q10a'>{{filterdData[0].Opta10}}</label><br/>
+  <input type='radio' [(ngModel)]='q10' value='b' id='qb10'  name='q10'><label for='q10b'>{{filterdData[0].Optb10}}</label><br/>
+  <input type='radio' [(ngModel)]='q10' value='c' id='qc10'  name='q10'><label for='q10c'>{{filterdData[0].Optc10}}</label><br/>
+  <input type='radio' [(ngModel)]='q10' value='d' id='qd10'  name='q10'><label for='q10d'>{{filterdData[0].Optd10}}</label><br/>
+  </ul>
+  <button class="btn btn-default" (click)="SubmitClick(filterdData[0].$key)">Submit</button>
+</div>
+

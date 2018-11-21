@@ -1,0 +1,30 @@
+<app-menu></app-menu>
+<div class="main">
+  <h1>React Quiz</h1>
+    <p class="question">1.ReactJS focuses on which of the following part when considering MVC?</p>
+    <ul class="answers">
+    <input type="radio" [(ngModel)]="q1" value="1a" id="q1a"  name="q1"><label for="q1a">M (Model)</label><br/>
+    <input type="radio" [(ngModel)]="q1" value="1b" id="q1b"  name="q1"><label for="q1b">V (view)</label><br/>
+    <input type="radio" [(ngModel)]="q1" value="1c" id="q1c"  name="q1"><label for="q1c">C (controller)</label><br/>
+    <input type="radio" [(ngModel)]="q1" value="1d" id="q1d"  name="q1"><label for="q1d">All of the above</label><br/>
+    </ul>
+    <p class="question">2.Which of the following concepts is/are key to ReactJS</p>
+<ul class="answers1">
+<input type="radio" [(ngModel)]="q2" value="2a" id="q2a" name="q2"><label for="q2a">Component-oriented design</label><br/>
+<input type="radio" [(ngModel)]="q2" value="2b" id="q2b" name="q2"><label for="q2b">Event delegation model</label><br/>
+<input type="radio" [(ngModel)]="q2" value="2c" id="q2c" name="q2"><label for="q2c">Both of the above</label><br/>
+<input type="radio" [(ngModel)]="q2" value="2d" id="q2d" name="q2"><label for="q2d">None of the above</label><br/>
+</ul>
+<p class="question">3.ReactJS is an MVC based framework?</p>
+<ul class="answers">
+<input type="radio" [(ngModel)]="q3" value="3a" id="q3a"  name="q3"><label for="q3a">True</label><br/>
+<input type="radio" [(ngModel)]="q3" value="3d" id="q3d"  name="q3"><label for="q3d">False</label><br/>
+</ul>
+<p class="question">4.Which of the following API is a MUST for every ReactJS component?</p>
+<ul class="answers">
+<input type="radio" [(ngModel)]="q4" value="4a" id="q4a" name="q4"><label for="q4a">getInitialState</label><br/>
+<input type="radio" [(ngModel)]="q4" value="4b" id="q4b" name="q4"><label for="q4b">render</label><br/>
+<input type="radio" [(ngModel)]="q4" value="4c" id="q4c" name="q4"><label for="q4c">renderComponent</label><br/>
+</ul>
+<button class="btn btn-default" (click)="SubmitClick()">Submit</button>
+  </div>

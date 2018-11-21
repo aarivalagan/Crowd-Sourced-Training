@@ -1,0 +1,38 @@
+<app-menu></app-menu>
+<nav class="navbar navbar-inverse bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <!--<li><a href="javascript:void(0)">Hi {{name}}</a></li>-->
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2']">HOME</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/admin']">Admin</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/Intro']">Modules</a></li>
+    <li class="nav-item"><a class="nav-link" (click)=Quiz(this.videodata1[0].name)>Quizzes</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/video']">Videos</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/training/Angular2/Angular2/files']">Files</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/login']" (click)=logout()>LogOut</a></li>
+  </ul>
+</nav>
+<div class="main">
+  <div class="card card-body bg-light">Videos</div>
+    <!--<a href="{{videodata1[0].embed}}" target="_blank" class="col-sm-4" style="padding-bottom: 10px">Click here for the pdf file</a>-->
+    <!--<div style="height:20%;margin:0%" *ngIf="videodata1[0].embed && videodata1[0].isActive">-->
+      <!--<h1>hello</h1>-->
+      <!--<iframe [src]='getEmbedUrl(this.videodata1[0].embed)' allowfullscreen class="col-sm-4"></iframe>-->
+      <iframe [src]='getEmbedUrl1(this.videodata1[0].embed)' allowfullscreen class="col-sm-4"></iframe><br><br>
+      <iframe [src]='getEmbedUrl2(this.videodata1[0].embed1)' allowfullscreen class="col-sm-4"></iframe><br><br>
+      <iframe [src]='getEmbedUrl3(this.videodata1[0].embed2)' allowfullscreen class="col-sm-4"></iframe><br><br>
+    <!--</div>-->
+    <!--<a href="{{videodata1[0].file}}" target="_blank" class="col-sm-4" style="padding-bottom: 10px">Click here for the uploaded file</a>-->
+    <!--<div style="height:20%;margin:0%" *ngIf="item.embed && item.isActive">
+      <iframe [src]='getEmbedUrl(item)' allowfullscreen class="col-sm-4"></iframe>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)]="item.Completed" (click)="CheckboxCheck(item.$key,item.Completed)">Mark as Complete</label>
+          <img src="assets/pdf.jpg" style="height:25px;width:25px" class="smallStatusImage" alt="Excel Icon for View Accrual Excel Report"/>
+          <a href="{{item.URL}}" target="_blank" class="col-sm-4" style="padding-bottom: 10px">Click here for the pdf file</a>
+          <a href="{{item.file}}" target="_blank" class="col-sm-4" style="padding-bottom: 10px">Click here for the uploaded file</a>
+          <button type="button" class="btn btn-primary" (click)="Quiz(item.name)" >Go to Quiz</button>
+      </div>
+    </div>-->
+</div>
+
+<!--<h3>{{item.name}}</h3>-->

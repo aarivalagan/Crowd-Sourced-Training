@@ -1,0 +1,58 @@
+<app-menu></app-menu>
+<nav class="navbar navbar-inverse bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <!--<li><a href="javascript:void(0)">Hi {{name}}</a></li>-->
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2']">HOME</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/admin']">Admin</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/Intro']">Modules</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/this.videodata1[0].name']" (click)=Quiz(this.videodata1[0].name)>Quizzes</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/video']">Videos</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/training/Angular2/Angular2/files']">Files</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/login']" (click)=logout()>LogOut</a></li>
+  </ul>
+</nav>
+<h1>Modules</h1>
+<p>>Modules are used in Angular JS to put logical boundaries in your application. Hence, instead of coding everything into one application, you can instead build everything into separate modules to separate the functionality of your application. Let’s inspect the code which gets added to the demo application.</p>
+
+<p>In Visual Studio code, go to the app.module.ts folder in your app folder. This is known as the root module class.</p>
+
+Root Module Class
+The following code will be present in the app.module.ts file.
+
+<!--<pre>
+  <code>
+import { NgModule }      from '@angular/core'; 
+import { BrowserModule } from '@angular/platform-browser';  
+import { AppComponent }  from './app.component';  
+
+@NgModule ({ 
+   imports:      [ BrowserModule ], 
+   declarations: [ AppComponent ], 
+   bootstrap:    [ AppComponent ] 
+}) 
+export class AppModule { }
+  </code>
+</pre>-->
+
+<p>Let’s go through each line of the code in detail.</p>
+
+<li>The import statement is used to import functionality from the existing modules. Thus, the first 3 statements are used to import the NgModule, BrowserModule and AppComponent modules into this module.</li>
+
+<li>The NgModule decorator is used to later on define the imports, declarations, and bootstrapping options.</li>
+
+<li>The BrowserModule is required by default for any web based angular application.</li>
+
+<li>The bootstrap option tells Angular which Component to bootstrap in the application.</li>
+
+<p>A module is made up of the following parts −</p>
+<ul>
+<li>Bootstrap array − This is used to tell Angular JS which components need to be loaded so that its functionality can be accessed in the application. Once you include the component in the bootstrap array, you need to declare them so that they can be used across other components in the Angular JS application.</li>
+
+<li>Export array − This is used to export components, directives, and pipes which can then be used in other modules.</li>
+
+<li>Import array − Just like the export array, the import array can be used to import the functionality from other Angular JS modules.</li>
+
+<ul class="pagination">
+    <li class="page-item"><a class="page-link" href="/training/Angular2/Angular2/Intro/environment">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="/training/Angular2/Angular2/Intro/architecture">Next</a></li>
+  </ul>

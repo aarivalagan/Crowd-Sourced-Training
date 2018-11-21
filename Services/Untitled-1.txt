@@ -1,0 +1,479 @@
+quiz.hml
+
+<app-menu></app-menu>
+<div class='main' *ngIf="filterdData[0]">
+  <h1> {{filterdData[0].name}} Quiz</h1>
+  <p class='question'>{{filterdData[0].question1}}</p>
+  
+  <ul class='answers'>
+  <input type='radio' [(ngModel)]='q1' value='a' id='qa1'  name='q1'><label for='q1a'>{{filterdData[0].Opta1}}</label><br/>
+  <input type='radio' [(ngModel)]='q1' value='b' id='qb1'  name='q1'><label for='q1b'>{{filterdData[0].Optb1}}</label><br/>
+  <input type='radio' [(ngModel)]='q1' value='c' id='qc1'  name='q1'><label for='q1c'>{{filterdData[0].Optc1}}</label><br/>
+  <input type='radio' [(ngModel)]='q1' value='d' id='qd1'  name='q1'><label for='q1d'>{{filterdData[0].Optd1}}</label><br/>
+  </ul>
+  <p class='question'>{{filterdData[0].question2}}</p>
+  <ul class='answers'>
+  <input type='radio' [(ngModel)]='q2' value='a' id='qa2'  name='q2'><label for='q2a'>{{filterdData[0].Opta2}}</label><br/>
+  <input type='radio' [(ngModel)]='q2' value='b' id='qb2'  name='q2'><label for='q2b'>{{filterdData[0].Optb2}}</label><br/>
+  <input type='radio' [(ngModel)]='q2' value='c' id='qc2'  name='q2'><label for='q2c'>{{filterdData[0].Optc2}}</label><br/>
+  <input type='radio' [(ngModel)]='q2' value='d' id='qd2'  name='q2'><label for='q2d'>{{filterdData[0].Optd2}}</label><br/>
+  </ul>
+  <p class='question'>{{filterdData[0].question3}}</p>
+  <ul class='answers'>
+  <input type='radio' [(ngModel)]='q3' value='a' id='qa3'  name='q3'><label for='q3a'>{{filterdData[0].Opta3}}</label><br/>
+  <input type='radio' [(ngModel)]='q3' value='b' id='qb3'  name='q3'><label for='q3b'>{{filterdData[0].Optb3}}</label><br/>
+  <input type='radio' [(ngModel)]='q3' value='c' id='qc3'  name='q3'><label for='q3c'>{{filterdData[0].Optc3}}</label><br/>
+  <input type='radio' [(ngModel)]='q3' value='d' id='qd3'  name='q3'><label for='q3d'>{{filterdData[0].Optd3}}</label><br/>
+  </ul>
+  <p class='question'>{{filterdData[0].question4}}</p>
+  <ul class='answers'>
+  <input type='radio' [(ngModel)]='q4' value='a' id='qa4'  name='q4'><label for='q4a'>{{filterdData[0].Opta4}}</label><br/>
+  <input type='radio' [(ngModel)]='q4' value='b' id='qb4'  name='q4'><label for='q4b'>{{filterdData[0].Optb4}}</label><br/>
+  <input type='radio' [(ngModel)]='q4' value='c' id='qc4'  name='q4'><label for='q4c'>{{filterdData[0].Optc4}}</label><br/>
+  <input type='radio' [(ngModel)]='q4' value='d' id='qd4'  name='q4'><label for='q4d'>{{filterdData[0].Optd4}}</label><br/>
+  </ul>
+  <button class="btn btn-default" (click)="SubmitClick(filterdData[0].$key)">Submit</button>
+</div>
+
+quiz.s
+
+import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { VideoDataService } from '../Services/videoData.service';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+
+@Component({
+  selector: 'app-quizzes',
+  templateUrl: './quizzes.component.html',
+  styleUrls: ['./quizzes.component.css']
+})
+export class QuizzesComponent {
+  param: string;
+  newData: any = [];
+  videoList: any = [];
+  q1: string;
+  q2: string;
+  q3: string;
+  q4: string;
+  score: number = 0;
+  filterData: AngularFireList<any>;
+  filterdData: any = [];
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private db: AngularFireDatabase,
+    private dataService: VideoDataService
+  ) {
+    this.filterData = this.db.list('/newSports');
+    this.dataService.getVideoData().snapshotChanges().subscribe(item => {
+      item.forEach(element => {
+        const x = element.payload.toJSON();
+        console.log(x);
+        x['$key'] = element.key;
+        this.videoList.push(x);
+        console.log(this.videoList);
+        this.param = this.route.snapshot.paramMap.get('name');
+        this.filterdData = [];
+        this.videoList.forEach(v => {
+          if (v.name === this.param) {
+            this.filterdData.push(v);
+            console.log(this.filterdData);
+            console.log(this.filterdData[0].answer1);
+            console.log(this.filterdData[0].answer2);
+            console.log(this.filterdData[0].answer3);
+            console.log(this.filterdData[0].answer4);
+          }
+        });
+      });
+    });
+  }
+  
+  SubmitClick($key: string) {
+    if (this.q1 !== undefined) {
+      console.log(this.q1);
+      if (this.filterdData[0].answer1 === this.q1) {
+        this.filterData.update($key, { isQCompleted: true });
+        this.score += 1;
+        console.log(this.q1);
+        //console.log(Object.values(this.filterdData[0]));
+        //this.router.navigate(['/training']);
+      } 
+        //alert('correct');
+      
+    }
+    if (this.q2 !== undefined) {
+      console.log(this.q2);
+      if (this.filterdData[0].answer2 === this.q2) {
+        //console.log(this.filterdData[0].Score);
+        this.filterData.update($key, { isQCompleted: true });
+        this.score += 1;
+        //alert('correct');
+        //this.router.navigate(['/training']);
+      } 
+      
+    }
+    if (this.q3 !== undefined) {
+      console.log(this.q3);
+      if (this.filterdData[0].answer3 === this.q3) {
+        this.filterData.update($key, { isQCompleted: true });
+        //console.log(this.filterData[0].Score);
+        this.score += 1;
+        //alert('correct');
+        //this.router.navigate(['/training']);
+      } 
+    }
+    if (this.q4 !== undefined) {
+      console.log(this.q4);
+      if (this.filterdData[0].answer4 === this.q4) {
+        this.filterData.update($key, { isQCompleted: true });
+        //console.log(this.filterData[0].Score);
+        this.score += 1;
+        //console.log(this.Score);
+      } 
+    } else {
+      alert('Please answer all questions to submit');
+    }
+    //if ((this.filterdData[0].answer1 === this.q1) && (this.filterdData[0].answer2 === this.q2) && (this.filterdData[0].answer3 === this.q3) && (this.filterdData[0].answer4 === this.q4)) {
+      //this.filterData.update($key, { isQCompleted: true });
+      //localStorage.setItem("Score",this.filterData[0].Score.toString());
+        alert("Congrats for Completing the quiz .Your Score is : " + this.score);
+        this.router.navigate(['/training']);
+    //}
+  }
+}
+
+admin.hml
+
+<app-menu></app-menu>
+<script>console.log(5 + 6);</script>
+<!-- <div class="main">
+    <div class="card card-body bg-light">Admin Module</div>
+    <div *ngFor='let item of videoList'>
+     <span *ngIf="item.embed">{{item.rule}}</span> 
+      <div style="height:20%;margin:0%" *ngIf="item.embed">
+        <iframe [src]='getEmbedUrl(item)' allowfullscreen class="col-sm-4"></iframe>
+        <img src="assets/pdf.jpg" style="height:25px;width:25px" class="smallStatusImage" alt="Excel Icon for View Accrual Excel Report"
+        />
+        <a href="{{item.URL}}" target="_blank" class="col-sm-4" style="padding-bottom: 10px">Click here for the pdf file</a>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" [(ngModel)]="item.isActive" (click)="CheckboxCheck(item.rule,$event)">Make It Active</label>
+        </div>
+      </div>
+    </div>
+  </div> -->
+<div class="main">
+  <!-- <div class="form-group">
+      <label for="usr">Course Name:</label>
+      <input type="text" [(ngModel)]="sName" class="form-control" id="usr">
+    </div>
+
+    <div class="form-group">
+      <label for="pwd">Youtube Embed:</label>
+      <input type="text"  [(ngModel)]="sEmbed" class="form-control" id="pwd">
+    </div>
+
+    <div class="form-group">
+      <label for="lnk">PDF Link:</label>
+      <input type="text" class="form-control" id="lnk" [(ngModel)]="sLink">
+    </div>
+    <div class="form-group">
+      <label for="que">Question:</label>
+      <input type="text" class="form-control" id="que" [(ngModel)]="sQuestion">
+    </div>
+    <button type="button" class="btn btn-info" (click)="publishIt()">Publish</button> -->
+  <form [formGroup]="videoForm">
+    <div class="form-group col-sm-12">
+      <label for="usr">Course Name: </label>
+      <input type="text" formControlName="name" class="form-control" id="name" required>
+      <div *ngIf="videoForm.controls['name'].errors && !videoForm.controls['name'].pristine" class="error-msg">
+        <div [hidden]="!videoForm.controls['name'].errors.required">Name is required.</div>
+      </div>
+    </div>
+    <div class="form-group col-sm-12">
+      <label for="usr">Document Link: </label>
+      <input type="text" formControlName="URL" class="form-control" id="URL" required>
+    </div>
+    <div class="form-group col-sm-12">
+      <label for="usr">Video Embed: </label>
+      <input type="text" formControlName="embed" class="form-control" id="embed" required>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="usr">Question 1: </label>
+      <input type="text" formControlName="question1" class="form-control" id="question1" required>
+    </div>
+    <div class="form-group col-sm-6">
+      <label for="usr">Option A: </label>
+      <input type="text" formControlName="Opta1" class="form-control" id="Opta1" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option B: </label>
+      <input type="text" formControlName="Optb1" class="form-control" id="Optb1" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option C: </label>
+      <input type="text" formControlName="Optc1" class="form-control" id="Optc1" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option D: </label>
+      <input type="text" formControlName="Optd1" class="form-control" id="Optd1" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Correct Answer: </label>
+      <input type="text" formControlName="answer1" class="form-control" id="answer1" required>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="usr">Question 2: </label>
+      <input type="text" formControlName="question2" class="form-control" id="question2" required>
+    </div>
+    <div class="form-group col-sm-6">
+      <label for="usr">Option A: </label>
+      <input type="text" formControlName="Opta2" class="form-control" id="Opta2" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option B: </label>
+      <input type="text" formControlName="Optb2" class="form-control" id="Optb2" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option C: </label>
+      <input type="text" formControlName="Optc2" class="form-control" id="Optc2" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option D: </label>
+      <input type="text" formControlName="Optd2" class="form-control" id="Optd2" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Correct Answer: </label>
+      <input type="text" formControlName="answer2" class="form-control" id="answer2" required>
+    </div>
+    
+    <div class="form-group col-sm-12">
+      <label for="usr">Question 3: </label>
+      <input type="text" formControlName="question3" class="form-control" id="question3" required>
+    </div>
+    <div class="form-group col-sm-6">
+      <label for="usr">Option A: </label>
+      <input type="text" formControlName="Opta3" class="form-control" id="Opta3" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option B: </label>
+      <input type="text" formControlName="Optb3" class="form-control" id="Optb3" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option C: </label>
+      <input type="text" formControlName="Optc3" class="form-control" id="Optc3" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option D: </label>
+      <input type="text" formControlName="Optd3" class="form-control" id="Optd3" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Correct Answer: </label>
+      <input type="text" formControlName="answer3" class="form-control" id="answer3" required>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <label for="usr">Question 4: </label>
+      <input type="text" formControlName="question4" class="form-control" id="question4" required>
+    </div>
+    <div class="form-group col-sm-6">
+      <label for="usr">Option A: </label>
+      <input type="text" formControlName="Opta4" class="form-control" id="Opta4" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option B: </label>
+      <input type="text" formControlName="Optb4" class="form-control" id="Optb4" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option C: </label>
+      <input type="text" formControlName="Optc4" class="form-control" id="Optc4" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Option D: </label>
+      <input type="text" formControlName="Optd4" class="form-control" id="Optd4" required>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label for="usr">Correct Answer: </label>
+      <input type="text" formControlName="answer4" class="form-control" id="answer4" required>
+    </div>
+
+    <button type="submit" [disabled]="videoForm.invalid" class="btn btn-info" (click)="publishIt()">Publish</button>
+  </form>
+  <!-- <p>Form value: {{ videoForm.value | json }}</p> -->
+  
+</div>
+
+admin.s
+import { Component } from '@angular/core';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { TrainingModuleData } from '../TrainingModule/traininmodule.class';
+
+@Component({
+    templateUrl: './admin.component.html'
+})
+export class AdminComponent {
+    videoForm: FormGroup;
+    items: AngularFireList<TrainingModuleData[]>;
+    item: TrainingModuleData = new TrainingModuleData();
+    test: TrainingModuleData[] = [];
+    constructor(private db: AngularFireDatabase, private router: Router, private fb: FormBuilder) {
+        this.createForm();
+        this.items = this.db.list('/newSports');
+    }
+    createForm() {
+        this.videoForm = this.fb.group({
+            name: ['', Validators.required],
+            URL: ['', Validators.required],
+            embed: ['', Validators.required],
+            question1: ['', Validators.required],
+            Opta1: ['', Validators.required],
+            Optb1: ['', Validators.required],
+            Optc1: ['', Validators.required],
+            Optd1: ['', Validators.required],
+            answer1: ['', Validators.required],
+            question2: ['', Validators.required],
+            Opta2: ['', Validators.required],
+            Optb2: ['', Validators.required],
+            Optc2: ['', Validators.required],
+            Optd2: ['', Validators.required],
+            answer2: ['', Validators.required],
+            question3: ['', Validators.required],
+            Opta3: ['', Validators.required],
+            Optb3: ['', Validators.required],
+            Optc3: ['', Validators.required],
+            Optd3: ['', Validators.required],
+            answer3: ['', Validators.required],
+            question4: ['', Validators.required],
+            Opta4: ['', Validators.required],
+            Optb4: ['', Validators.required],
+            Optc4: ['', Validators.required],
+            Optd4: ['', Validators.required],
+            answer4: ['', Validators.required],
+            Completed: false,
+            isActive: true,
+            isQCompleted: false,
+            Score: 3
+        });
+        
+    }
+    
+    publishIt() {
+        alert('Pusblished');
+        this.item.key = this.videoForm.value.name;
+        this.item.answer1 = this.videoForm.value.answer;
+        this.item.answer2 = this.videoForm.value.answer;
+        this.item.answer3 = this.videoForm.value.answer;
+        this.item.answer4 = this.videoForm.value.answer;
+        this.item.Completed = this.videoForm.value.Completed;
+        this.item.isActive = true;
+        this.item.isQCompleted = false;
+        this.item.Score = 3;
+        this.item.name = this.videoForm.value.name;
+        this.item.URL = this.videoForm.value.URL;
+        this.item.embed = this.videoForm.value.embed;
+        this.item.Opta1 = this.videoForm.value.Opta1;
+        this.item.Optb1 = this.videoForm.value.Optb1;
+        this.item.Optc1 = this.videoForm.value.Optc1;
+        this.item.Optd1 = this.videoForm.value.Optd1;
+        this.item.question1 = this.videoForm.value.question1;
+        this.item.Opta2 = this.videoForm.value.Opta2;
+        this.item.Optb2 = this.videoForm.value.Optb2;
+        this.item.Optc2 = this.videoForm.value.Optc2;
+        this.item.Optd2 = this.videoForm.value.Optd2;
+        this.item.question2 = this.videoForm.value.question2;
+        this.item.Opta3 = this.videoForm.value.Opta3;
+        this.item.Optb3 = this.videoForm.value.Optb3;
+        this.item.Optc3 = this.videoForm.value.Optc3;
+        this.item.Optd3 = this.videoForm.value.Optd3;
+        this.item.question3 = this.videoForm.value.question3;
+        this.item.Opta4 = this.videoForm.value.Opta4;
+        this.item.Optb4 = this.videoForm.value.Optb4;
+        this.item.Optc4 = this.videoForm.value.Optc4;
+        this.item.Optd4 = this.videoForm.value.Optd4;
+        this.item.question4 = this.videoForm.value.question4;
+        this.test.push(this.item);
+       // this.items.push(this.test);
+        this.db.list(`/newSports/`).push(this.videoForm.value);
+        this.router.navigate(['/training']);
+        console.log(this.videoForm.value.name);
+    }
+}
+
+raininmodule.class.s
+export class TrainingModuleData {
+    name: string;
+    embed: string;
+    question1: string;
+    question2: string;
+    question3: string;
+    question4: string;
+    isActive: boolean;
+    Completed: boolean;
+    URL: string;
+    Score: number;
+    Opta1: string;
+    Optb1: string;
+    Optc1: string;
+    Optd1: string;
+    answer1: string;
+    Opta2: string;
+    Optb2: string;
+    Optc2: string;
+    Optd2: string;
+    answer2: string;
+    Opta3: string;
+    Optb3: string;
+    Optc3: string;
+    Optd3: string;
+    answer3: string;
+    Opta4: string;
+    Optb4: string;
+    Optc4: string;
+    Optd4: string;
+    answer4: string;
+    isQCompleted: boolean;
+    key: string;
+}
+
+
+constructor(private dom: DomSanitizer, private db: AngularFireDatabase,
+    private router: Router, private dataService: VideoDataService) {
+    this.dataService.getVideoData().snapshotChanges().subscribe(item => {
+      this.videoList = [];
+      item.forEach(element => {
+        const x = element.payload.toJSON();
+        x['$key'] = element.key;
+        this.videoList.push(x);
+      });
+    });
+  }
+  getEmbedUrl(item) {
+    return this.dom.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + item.embed + '?ecver=2');
+  }
+  CheckboxCheck($key: string, Completed: boolean) {
+    this.dataService.UpdateVideoList($key, !Completed);
+  }
+  Quiz(item: string) {
+    this.router.navigate(['/quiz/' + item]);
+  }

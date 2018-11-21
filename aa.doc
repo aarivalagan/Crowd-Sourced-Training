@@ -1,0 +1,166 @@
+Folder PATH listing for volume Windows
+Volume serial number is FA6E-B6CC
+C:.
+|   aa.doc
+|   app.component.css
+|   app.component.html
+|   app.component.spec.ts
+|   app.component.ts
+|   app.module.ts
+|   
++---Admin
+|       admin.component.css
+|       admin.component.html
+|       admin.component.ts
+|       
++---completed
+|       completed.component.css
+|       completed.component.html
+|       completed.component.spec.ts
+|       completed.component.ts
+|       
++---contributions
+|       contributions.component.css
+|       contributions.component.html
+|       contributions.component.spec.ts
+|       contributions.component.ts
+|       
++---currentwork
+|       currentwork.component.css
+|       currentwork.component.html
+|       currentwork.component.spec.ts
+|       currentwork.component.ts
+|       
++---Home
+|       home.component.css
+|       home.component.html
+|       home.component.ts
+|       
++---Login
+|       login.component.html
+|       login.component.ts
+|       
++---menu
+|       menu.component.css
+|       menu.component.html
+|       menu.component.spec.ts
+|       menu.component.ts
+|       
++---progress
+|       progress.component.css
+|       progress.component.html
+|       progress.component.spec.ts
+|       progress.component.ts
+|       
++---providers
+|       auth.service.spec.ts
+|       auth.service.ts
+|       
++---quizzes
+|   |   quizzes.component.css
+|   |   quizzes.component.html
+|   |   quizzes.component.spec.ts
+|   |   quizzes.component.ts
+|   |   
+|   +---Angularquiz
+|   |       Angularquiz.component.css
+|   |       Angularquiz.component.html
+|   |       Angularquiz.component.spec.ts
+|   |       Angularquiz.component.ts
+|   |       
+|   +---CSSquiz
+|   |       CSSquiz.component.css
+|   |       CSSquiz.component.html
+|   |       CSSquiz.component.spec.ts
+|   |       CSSquiz.component.ts
+|   |       
+|   +---HTMLquiz
+|   |       HTMLquiz.component.css
+|   |       HTMLquiz.component.html
+|   |       HTMLquiz.component.spec.ts
+|   |       HTMLquiz.component.ts
+|   |       
+|   +---Javaquiz
+|   |       Javaquiz.component.css
+|   |       Javaquiz.component.html
+|   |       Javaquiz.component.spec.ts
+|   |       Javaquiz.component.ts
+|   |       
+|   \---Reactquiz
+|           Reactquiz.component.css
+|           Reactquiz.component.html
+|           Reactquiz.component.spec.ts
+|           Reactquiz.component.ts
+|           
++---Services
+|       auth-gaurd.service.ts
+|       ng-boostrap-dropdown.directive.ts
+|       Untitled-1.txt
+|       Untitled-2.txt
+|       user.service.ts
+|       videoData.service.ts
+|       
+\---TrainingModule
+    |   trainingmodule.component.css
+    |   trainingmodule.component.html
+    |   trainingmodule.component.ts
+    |   traininmodule.class.ts
+    |   
+    +---Angular2
+    |       Angular2.component.html
+    |       Angular2.component.ts
+    |       Angular2_architecture.component.html
+    |       Angular2_architecture.component.ts
+    |       Angular2_component.component.html
+    |       Angular2_component.component.ts
+    |       Angular2_directive.component.html
+    |       Angular2_directive.component.ts
+    |       Angular2_environment.component.html
+    |       Angular2_environment.component.ts
+    |       Angular2_errorhandling.component.html
+    |       Angular2_errorhandling.component.ts
+    |       Angular2_file.component.html
+    |       Angular2_file.component.ts
+    |       Angular2_form.component.html
+    |       Angular2_form.component.ts
+    |       Angular2_Intro.component.html
+    |       Angular2_Intro.component.ts
+    |       Angular2_modules.component.html
+    |       Angular2_modules.component.ts
+    |       Angular2_navigation.component.html
+    |       Angular2_navigation.component.ts
+    |       Angular2_overview.component.html
+    |       Angular2_overview.component.ts
+    |       Angular2_routing.component.html
+    |       Angular2_routing.component.ts
+    |       Angular2_userinput.component.html
+    |       Angular2_userinput.component.ts
+    |       Angular2_video.component.html
+    |       Angular2_video.component.ts
+    |       Angular_CLI.component.html
+    |       Angular_CLI.component.ts
+    |       Angular_CRUD.component.html
+    |       Angular_CRUD.component.ts
+    |       Angular_databinding.component.html
+    |       Angular_databinding.component.ts
+    |       Angular_metadata.component.html
+    |       Angular_metadata.component.ts
+    |       Angular_nestedcontainer.component.html
+    |       Angular_nestedcontainer.component.ts
+    |       Angular_services.component.html
+    |       Angular_services.component.ts
+    |       Angular_templates.component.html
+    |       Angular_templates.component.ts
+    |       Angular_transformdata.component.html
+    |       Angular_transformdata.component.ts
+    |       
+    +---Java
+    |       Intro.html
+    |       Java.Component.html
+    |       Java.Component.ts
+    |       
+    \---Trainingmaterials
+            Trainingmaterials.component.css
+            Trainingmaterials.component.html
+            Trainingmaterials.component.ts
+            

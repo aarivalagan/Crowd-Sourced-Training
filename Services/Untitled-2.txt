@@ -1,0 +1,71 @@
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { VideoDataService } from '../Services/videoData.service';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { DomSanitizer } from '@angular/platform-browser';
+import { TrainingModuleData } from './traininmodule.class';
+
+@Component({
+  selector: 'app-Trainingmaterials',
+  templateUrl: './Trainingmaterials.component.html',
+  styleUrls: ['./Trainingmaterials.component.css']
+})
+export class TrainingmaterialsComponent {
+  videoList: any[];
+  param1: string;
+  videodata: any[];
+  constructor(private dom: DomSanitizer, private db: AngularFireDatabase,
+    private router: Router, private dataService: VideoDataService, private route: ActivatedRoute) {
+    this.dataService.getVideoData().snapshotChanges().subscribe(item => {
+      this.videoList = [];
+      this.param1 = this.route.snapshot.paramMap.get('name');
+        this.videodata = [];
+        this.videoList.forEach(v => {
+          if (v.name === this.param1) {
+            this.videodata.push(v);
+          }
+        });
+    });
+  }
+  getEmbedUrl(item) {
+    return this.dom.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + item.embed + '?ecver=2');
+  }
+  CheckboxCheck($key: string, Completed: boolean) {
+    this.dataService.UpdateVideoList($key, !Completed);
+  }
+  Quiz(item: string) {
+    this.router.navigate(['/quiz/' + item]);
+  }
+  
+}
+
+
+export class TrainingmaterialsComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+
+<div class="form-group col-sm-12">
+      <label for="usr">Choose file to Upload </label>
+      <input type="file" multiple formControlName="file" class="form-control" id="file" (change)=uploadFile($event) accept=".pdf,.docx" required>
+    </div>
+
+<app-menu></app-menu>
+<div class='main' *ngIf="this.videodata1[0].name">
+    <div class="card card-body bg-light">{{ this.videodata1[0].name}} Training</div>
+    <iframe [src]='getEmbedUrl(this.videodata1[0].embed)' allowfullscreen class="col-sm-4"></iframe>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" [(ngModel)]="this.videodata1[0].Completed" (click)="CheckboxCheck(this.videodata1[0].$key,this.videodata1[0].Completed)">Mark as Complete</label>
+            <img src="assets/pdf.jpg" style="height:25px;width:25px" class="smallStatusImage" alt="Excel Icon for View Accrual Excel Report"/>
+            <a href="{{this.videodata1[0].URL}}" target="_blank" class="col-sm-4" style="padding-bottom: 10px">Click here for the pdf file</a>
+            <a href="{{this.videodata1[0].file}}" target="_blank" class="col-sm-4" style="padding-bottom: 10px">Click here for the uploaded file</a>
+            <button type="button" class="btn btn-primary" (click)="Quiz(this.videodata1[0].name)" >Go to Quiz</button>
+        </div>
+      
+</div>
+

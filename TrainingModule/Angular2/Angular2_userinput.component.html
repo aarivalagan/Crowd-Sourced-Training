@@ -1,0 +1,87 @@
+<app-menu></app-menu>
+<nav class="navbar navbar-inverse bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <!--<li><a href="javascript:void(0)">Hi {{name}}</a></li>-->
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2']">HOME</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/admin']">Admin</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/Intro']">Modules</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/this.videodata1[0].name']" (click)=Quiz(this.videodata1[0].name)>Quizzes</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/video']">Videos</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/training/Angular2/Angular2/files']">Files</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/login']" (click)=logout()>LogOut</a></li>
+  </ul>
+</nav>
+<h1>User Input</h1>
+
+<p>In Angular 2, you can make the use of DOM element structure of HTML to change the values of the elements at run time. Let’s look at some in detail.
+
+<h4>The Input Tag</h4>
+<p>In the app.component.ts file place the following code.</p>
+
+<!--<pre>
+  <code>
+import { 
+   Component 
+} from '@angular/core';  
+
+@Component ({ 
+   selector: 'my-app', 
+   template: ' 
+      <div> 
+         <input [value] = "name" (input) = "name = $event.target.value"> 
+         {{name}} 
+      </div> 
+   ' 
+}) 
+export class AppComponent { }
+  </code>
+</pre>-->
+
+<p>Following things need to be noted about the above code.</p>
+<ul>
+
+<li>[value] = ”username” − This is used to bind the expression username to the input element’s value property.</li>
+
+<li>(input) = ”expression” − This a declarative way of binding an expression to the input element’s input event.</li>
+
+<li>username = $event.target.value − The expression that gets executed when the input event is fired.
+
+<li>$event − Is an expression exposed in event bindings by Angular, which has the value of the event’s payload.
+
+<p>Once you save all the code changes and refresh the browser, you will get the following output.
+
+You can now type anything and the same input will reflect in the text next to the Input control.</p>
+
+<a href="https://www.tutorialspoint.com/angular2/images/input_tag.jpg"></a>
+
+<!--<h3>Click Input</h3>
+<p>In the app.component.ts file place the following code.</p>
+<pre>
+  <code>
+      import {
+        Component
+     } from '@angular/core';
+     
+     @Component ({
+        selector: 'my-app',
+        template: '<button (Click) = "onClickMe()"> Click Me </button> {{clickMessage}}'
+     })
+     
+     export class AppComponent {
+        clickMessage = 'Hello';
+        onClickMe() {
+           this.clickMessage = 'This tutorial!';
+        }
+     }
+  </code>
+</pre>-->
+
+<p>Once you save all the code changes and refresh the browser, you will get the following output.</p>
+<a href="https://www.tutorialspoint.com/angular2/images/click_me.jpg"></a>
+
+<p>Once you save all the code changes and refresh the browser, you will get the following output.</p>
+<a href="https://www.tutorialspoint.com/angular2/images/click_me_button.jpg"></a>
+<ul class="pagination">
+    <li class="page-item"><a class="page-link" href="/training/Angular2/Angular2/Intro/form">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="/training/Angular2/Angular2/Intro/routing">Next</a></li>
+</ul>

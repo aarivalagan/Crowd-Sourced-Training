@@ -1,0 +1,17 @@
+<app-menu></app-menu>
+<div class='main' *ngIf="this.videodata1[0].name">
+    <div class="card card-body bg-light">{{ this.videodata1[0].name}} Training</div>
+        <div *ngFor='let item of videoList'>
+            <span *ngIf="this.videodata1[0].name == Java"><button type="button" class="btn btn-primary" (click)="Trainingmaterial1(item.name)" >Start</button></span>
+            <span *ngIf="this.videodata1[0].name == Angular"><button type="button" class="btn btn-primary" (click)="Trainingmaterial2(item.name)" >Start</button></span>
+        </div>
+        
+    <!--<script></script>
+    <button type="button" class="btn btn-primary" (click)="Trainingmaterial()">Click here for the uploaded file</button>
+    if({{this.videodata1[0].name}} == Java)
+        <a [routerLink]="['/training/this.videodata1[0].name/Java']" target="_blank" class="col-sm-4" style="padding-bottom: 10px">Click here for the uploaded file</a>
+        if({{this.videodata1[0].name}} == Angular)
+        <a [routerLink]="['/training/name/Java']" target="_blank" class="col-sm-4" style="padding-bottom: 10px">Click here for the uploaded file</a>      
+    -->
+      
+</div>

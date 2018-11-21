@@ -1,0 +1,16 @@
+<app-menu></app-menu>
+<div class="main">
+  <div class="card card-body bg-light">Training Modules</div>
+  <div *ngFor='let item of videoList'>
+    <span *ngIf=" item.isActive"><button type="button" class="btn btn-primary">{{ item.name }}</button></span>
+    <span *ngIf=" item.isActive"><button type="button" class="btn btn-primary" (click)="Training(item.name)">START</button></span>
+    <label><input type="checkbox" [(ngModel)]="item.Completed" (click)="saveUserPreference(item.$key,item.Completed)">Mark
+      as Complete</label>
+    <span *ngIf="enabled"><button type="button" class="btn btn-primary" (click)="Delete(item.$key)">Delete</button></span>
+    <span *ngIf="enabled"><button type="button" class="btn btn-primary" (click)="Modify(item.$key)">Edit</button></span>
+    <!-- <a>{{item.file}}</a> -->
+    <a href={{item.file}}>Downloadfile</a>
+  </div>
+</div>
+
+<!--<h3>{{item.name}}</h3>-->

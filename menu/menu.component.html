@@ -1,0 +1,43 @@
+<!--<nav class="navbar navbar-inverse" style="font-size: 18px; background-color:yellow">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Hi {{name}}</a>
+      </div>-->
+    <!--<div class="sidenav" style="font-size: 12px" >
+  <li><a href="javascript:void(0)">Hi {{name}}</a></li>
+<li><a [routerLink]="['/home']">HOME</a></li>
+<li><a [routerLink]="['/admin']">Admin</a></li>
+<li><a [routerLink]="['/training']">Training Modules</a></li>
+<li><a [routerLink]="['/complete']">Completed Trainings</a></li>
+<li><a [routerLink]="['/current']">Pending Trainings</a></li>
+<li><a [routerLink]="['/progress']">Progress</a></li>
+<li><a [routerLink]="['/login']" (click)=logout()>LogOut</a></li>
+  </ul>
+</div>-->
+<!--</nav>-->
+
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="javascript:void(0)">Hi {{name}}</a>
+  <ul class="nav nav-tabs">
+    <!--<li><a href="javascript:void(0)">Hi {{name}}</a></li>-->
+  <li class="nav-item"><a class="nav-link" [routerLink]="['/home']">HOME</a></li>
+  <li class="nav-item"><a class="nav-link" [routerLink]="['/admin']">Publish</a></li>
+  <li class="nav-item"><a class="nav-link" [routerLink]="['/training']">Training Modules</a></li>
+  <li class="nav-item"><a class="nav-link" [routerLink]="['/complete']">Completed Trainings</a></li>
+  <li class="nav-item"><a class="nav-link" [routerLink]="['/current']">Pending Trainings</a></li>
+  <li class="nav-item"><a class="nav-link"[routerLink]="['/progress']">Progress</a></li>
+  <li class="nav-item"><a class="nav-link"[routerLink]="['/login']" (click)=logout()>LogOut</a></li>
+  </ul>
+</nav>
+<div class="container text-center">    
+  <div class="row">
+    <div class="col-sm-3 well">
+      <div class="well">
+        <p><a href="javascript:void(0)">Hi {{name}}</a></p>
+        <img src="http://www.europe-together.eu/wp-content/themes/sd/images/user-placeholder.svg" class="img-circle" height="65" width="65" alt="Avatar">
+      </div>
+    </div>
+  </div>
+</div>

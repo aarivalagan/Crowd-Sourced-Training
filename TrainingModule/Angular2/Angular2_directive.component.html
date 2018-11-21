@@ -1,0 +1,145 @@
+<app-menu></app-menu>
+<nav class="navbar navbar-inverse bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <!--<li><a href="javascript:void(0)">Hi {{name}}</a></li>-->
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2']">HOME</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/admin']">Admin</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/Intro']">Modules</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/this.videodata1[0].name']" (click)=Quiz(this.videodata1[0].name)>Quizzes</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/video']">Videos</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/training/Angular2/Angular2/files']">Files</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/login']" (click)=logout()>LogOut</a></li>
+  </ul>
+</nav>
+<h1>Directive</h1>
+<p>A directive is a custom HTML element that is used to extend the power of HTML. Angular 2 has the following directives that get called as part of the BrowserModule module.</p>
+
+<ul>
+<li>ngif</li>
+<li>ngFor</li>
+</ul>
+
+<p>If you view the app.module.ts file, you will see the following code and the BrowserModule module defined. By defining this module, you will have access to the 2 directives.</p>
+
+<!--<pre>
+  <code>
+    import { NgModule }      from '@angular/core';
+    import { BrowserModule } from '@angular/platform-browser';
+    import { AppComponent }  from './app.component';
+    
+    @NgModule ({
+       imports:      [ BrowserModule ],
+       declarations: [ AppComponent ],
+       bootstrap:    [ AppComponent ]
+    })
+    export class AppModule { }
+  </code>
+</pre>-->
+
+Now let’s look at each directive in detail.
+
+<h3>ngIf</h3>
+<p>The ngif element is used to add elements to the HTML code if it evaluates to true, else it will not add the elements to the HTML code.</p>
+
+<!--<pre>
+  <code>
+    Syntax
+    *ngIf = 'expression'
+  </code>
+</pre>-->
+
+<p>If the expression evaluates to true then the corresponding gets added, else the elements are not added.
+
+Let’s now take a look at an example of how we can use the *ngif directive.</p>
+
+<ul>
+<li>Step 1 − First add a property to the class named appStatus. This will be of type Boolean. Let’s keep this value as true.</li>
+
+<!--<pre>
+  <code>
+    import { Component } from '@angular/core';  
+
+    @Component ({
+       selector: 'my-app',
+       templateUrl: 'app/app.component.html'
+    })
+    
+    export class AppComponent {
+       appTitle: string = 'Welcome';
+       appStatus: boolean = true;
+    }
+  </code>
+</pre>-->
+
+<li>Step 2 − Now in the app.component.html file, add the following code.</li>
+
+<!--<pre>
+  <code>
+    <div *ngIf = 'appStatus'>{{appTitle}} Tutorialspoint </div>
+  </code>
+</pre>-->
+ 
+<p>In the above code, we now have the *ngIf directive. In the directive we are evaluating the value of the appStatus property. Since the value of the property should evaluate to true, it means the div tag should be displayed in the browser.</p>
+
+<h3>ngFor</h3>
+<p>The ngFor element is used to elements based on the condition of the For loop.</p>
+
+<!--<pre>
+  <code>
+    Syntax
+*ngFor = 'let variable of variablelist'
+  </code>
+</pre>-->
+
+<p>The variable is a temporary variable to display the values in the variablelist.</p>
+
+<p>Let’s now take a look at an example of how we can use the *ngFor directive.</p>
+<ul>
+<li>Step 1 − First add a property to the class named appList. This will be of the type which can be used to define any type of arrays.
+
+  <!--<pre>
+    <code>
+      import { Component } from '@angular/core';
+ 
+      @Component ({
+         selector: 'my-app',
+         templateUrl: 'app/app.component.html'
+      })
+      
+      export class AppComponent {
+         appTitle: string = 'Welcome';
+         appList: any[] = [ {
+            "ID": "1",
+            "Name" : "One"
+         },
+      
+         {
+            "ID": "2",
+            "Name" : "Two"
+         } ];
+      }
+    </code>
+  </pre>-->
+
+<p>Hence, we are defining the appList as an array which has 2 elements. Each element has 2 sub properties as ID and Name.</p>
+
+<li>Step 2 − In the app.component.html, define the following code.</li>
+
+<!--<pre>
+  <code>
+    <div *ngFor = 'let lst of appList'> 
+      <ul> 
+         <li>{{lst.ID}}</li> 
+         <li>{{lst.Name}}</li> 
+      </ul> 
+   </div>
+  </code>
+</pre>-->
+
+<p>In the above code, we are now using the ngFor directive to iterate through the appList array. We then define a list where each list item is the ID and name parameter of the array.</p>
+
+<ul class="pagination">
+    <li class="page-item"><a class="page-link" href="/training/Angular2/Angular2/Intro/component">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="/training/Angular2/Angular2/Intro/errorandling">Next</a></li>
+  </ul>
+

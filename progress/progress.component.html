@@ -1,0 +1,35 @@
+<app-menu></app-menu>
+<div class="main">
+<div class="card card-body bg-light">Progress</div>
+<br>
+<p class="alert alert-info col-sm-6">
+  Number of courses Completed :{{trainingCom}}
+  <!--<span *ngIf="item.embed && item.isActive">-->
+  <button type="button" class="btn btn-primary" (click)="course_Completed()" >View courses</button>
+  <div id="demo" *ngFor='let course of completed_course'>
+    <span *ngIf="this.completed_course != NULL && completedCourse"><button type="button" class="btn btn-primary">{{course}}</button></span>
+  </div>
+
+<p class="alert alert-danger col-sm-6">
+  Number of  Ongoing  Pending :{{trainingpen}}
+  <button type="button" class="btn btn-primary" (click)="course_Pending()" >View courses</button>
+  <div id="demo" *ngFor='let course_pending of pending_course'>
+    <span *ngIf="this.pending_course != NULL && pendingCourse"><button type="button" class="btn btn-primary">{{course_pending}}</button></span>
+  </div>
+
+<p class="alert alert-info col-sm-6">
+  Number of Quizes Completed :{{quizCounter}}
+  <button type="button" class="btn btn-primary" (click)="course_Completed_Quiz()" >View courses</button>
+  <div id="demo" *ngFor='let completed_quiz of completed_course_quiz'>
+    <span *ngIf="this.completed_course_quiz != NULL && completedCourseQuiz"><button type="button" class="btn btn-primary">{{completed_quiz}}</button></span>
+  </div>
+
+<p class="alert alert-danger col-sm-6">
+    Number of Quizes Pending :{{quizPending}}
+    <button type="button" class="btn btn-primary" (click)="course = course_Pending_Quiz()">View courses</button>
+    <div id="demo" *ngFor='let pending_quiz of pending_course_quiz'>
+      <span *ngIf="this.pending_course_quiz != NULL && pendingCourseQuiz"><button type="button" class="btn btn-primary">{{pending_quiz}}</button></span>
+    </div>
+
+</div>
+

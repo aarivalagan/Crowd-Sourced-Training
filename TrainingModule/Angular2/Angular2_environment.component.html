@@ -1,0 +1,41 @@
+<app-menu></app-menu>
+<nav class="navbar navbar-inverse bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <!--<li><a href="javascript:void(0)">Hi {{name}}</a></li>-->
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2']">HOME</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/admin']">Admin</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/Intro']">Modules</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/this.videodata1[0].name']" (click)=Quiz(this.videodata1[0].name)>Quizzes</a></li>
+    <li class="nav-item"><a class="nav-link" [routerLink]="['/training/Angular2/Angular2/video']">Videos</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/training/Angular2/Angular2/files']">Files</a></li>
+    <li class="nav-item"><a class="nav-link"[routerLink]="['/login']" (click)=logout()>LogOut</a></li>
+  </ul>
+</nav>
+<h1>Environment</h1>
+<p>To start working with Angular 2, you need to get the following key components installed.</p>
+<ul>
+<li>Npm − This is known as the node package manager that is used to work with the open source repositories. Angular JS as a framework has dependencies on other components. And npm can be used to download these dependencies and attach them to your project.</li>
+
+<li>Git − This is the source code software that can be used to get the sample application from the github angular site.</li>
+
+<li>Editor − There are many editors that can be used for Angular JS development such as Visual Studio code and WebStorm. In our tutorial, we will use Visual Studio code which comes free of cost from Microsoft.</li>
+
+npm Installation
+Let’s now look at the steps to get npm installed. The official site for npm is https://www.npmjs.com/
+
+<ul>
+<li>Step 1 − Go to the “get started with npm” section in the site.</li>
+<li>Step 2 − In the next screen, choose the installer to download, depending on the operating system. For the purpose of this exercise, download the Windows 64 bit version.</li>
+<li>Step 3 − Launch the installer. In the initial screen, click the Next button.</li>
+<li>Step 4 − In the next screen, Accept the license agreement and click the next button.</li>
+<li>Step 5 − In the next screen, choose the destination folder for the installation and click the Next button.</li>
+<li>Step 6 − Choose the components in the next screen and click the Next button. You can accept all the components for the default installation.</li>
+<li>Step 7 − In the next screen, click the Install button.</li>
+<li>Step 8 − Once the installation is complete, click the Finish button.</li>
+<li>Step 9 − To confirm the installation, in the command prompt you can issue the command npm version. You will get the version number of npm as shown in the following screenshot.</li>
+</ul>
+
+<ul class="pagination">
+    <li class="page-item"><a class="page-link" href="/training/Angular2/Angular2/Intro/overview">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
